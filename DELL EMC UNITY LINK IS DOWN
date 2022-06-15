@@ -1,0 +1,6 @@
+##DELL EMC UNITY LINK IS DOWN
+alert any any any -> $HOME_NET any (msg: "[DELL EMC UNITY] LINK IS DOWN"; content:"ERROR"; content:"link is down"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; reference: url,https://www.dell.com/support/kbdoc/en-us/000050373/dell-emc-unity-fibre-channel-port-sp-xx-i-o-module-xx-fc-port-xx-link-is-down-user-correctable; sid:XXXXX; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on errors signaling a link down on this device. Usually errors on FC port link is something outside the array on the host to storage link, usually this is related to Switch cable/port/SFP errors. This is informational but can be used to troubleshoot issues in their environment that may cause security issues specifically effecting logging and data availability.'
+##Sample Logs:
+##8.8.8.8|user|err|err|example.host|2021-10-22T14:57:23Z|2021-10-22T14:57:23Z|VALUE| "2021-10-22T14:57:23.531Z" "jenny@8675309" "VALUE" "16513" "N/A" "ERROR" "13.37" :: "Fibre Channel port SP A I/O Module 1 FC Port 1 link is down." :: Category=User Component=Health TimeZone=UTC 
