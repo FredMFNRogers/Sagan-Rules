@@ -1,0 +1,6 @@
+##DELL EMC UNITY FAILED TO ADD A REMOTE SYSTEM
+alert any any any -> $HOME_NET any (msg: "[DELL EMC UNITY] FAILED TO ADD A REMOTE SYSTEM"; content:"ERROR"; content:"failed to add remote system"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event;  reference: url,https://www.dell.com/support/kbdoc/en-uy/000052401/dell-emc-unity-creating-replication-connection-fails-with-error-code-0x6500128-if-the-proper-replication-interfaces-are-not-configured-on-local-and-remote-systems; sid:XXXXX; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on errors caused by remote systems failing to be added. This is an informational alert that is meant to let clients know whn there is a problem with their remote device administration.'
+##Sample Logs:
+##8.8.8.8|user|err|err|example.host|2022-05-25T21:24:56Z|2022-05-25T21:24:56+00:00|VALUE| "2022-05-25T21:24:56.900Z" "jenny@8675309" "VALUE" "16671" "DOMAIN/USERNAME" "ERROR" "14:610005" :: "User DOMAIN/USERNAME failed to add remote system example2.host." :: Category=Audit Component=ReplicationPlugin TimeZone=UTC 
