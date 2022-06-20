@@ -1,6 +1,0 @@
-##DELL EMC UNITY POWER SUPPLY IS OPERATING NORMALLY
-alert any any any -> any any (msg: "[DELL EMC UNITY] POWER SUPPLY IS OPERATING NORMALLY"; content:"Power supply"; content:"is operating normally"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 3600; reference: https://www.dell.com/support/kbdoc/en-tt/000052454/dell-emc-unity-showing-incorrect-fault-on-power-supply-user-correctable; sid:5006591; rev:1;)
-##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that the "XXX_msg_XXX". This is an informational alert.'
-##Signature Playbook: 'This rule is designed to trigger once per hour on a faulting power supply that has returned to a normal operating state. This is an informational alert that should not fire unless there was a previous issue with the unit and is only used to confirm that everything is operating as it should be.'
-##Sample Logs:
-##8.8.8.8|user|info|info|example.host|2022-04-13T18:39:54Z|2022-04-13T18:39:54+00:00|VALUE| "2022-04-13T18:39:54.286Z" "jenny@8675309" "VALUE" "1337" "N/A" "INFO" "13.37" :: "Power supply DPE Power Supply A0 is operating normally" :: Category=User Component=Health TimeZone=UTC 
